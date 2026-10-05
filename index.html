@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SiteHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo"><span>◆</span> SiteHub</div>
+    <button class="add-btn" id="openModal">+ Add Site</button>
+</header>
+
+<main>
+    <section class="hero">
+        <h1>Discover useful sites.</h1>
+        <p>A community-made hub of websites.</p>
+    </section>
+
+    <section class="controls">
+        <div class="search-box">
+            <span>⌕</span>
+            <input type="text" id="searchInput" placeholder="Search sites...">
+        </div>
+        <select id="sortSelect">
+            <option value="newest">Newest</option>
+            <option value="views">Most Viewed</option>
+            <option value="stars">Most Starred</option>
+            <option value="az">A → Z</option>
+        </select>
+    </section>
+
+    <section class="categories" id="categories">
+        <button class="category active" data-category="all">All</button>
+        <button class="category" data-category="tools">Tools</button>
+        <button class="category" data-category="games">Games</button>
+        <button class="category" data-category="education">Education</button>
+        <button class="category" data-category="entertainment">Entertainment</button>
+        <button class="category" data-category="other">Other</button>
+    </section>
+
+    <div class="site-count"><span id="siteCount">Loading...</span></div>
+
+    <section id="siteGrid" class="site-grid"></section>
+
+    <section id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">◇</div>
+        <h2>No sites found</h2>
+        <p>Try another search or add a new site.</p>
+    </section>
+</main>
+
+<div class="modal-overlay hidden" id="modalOverlay">
+    <div class="modal">
+        <div class="modal-header">
+            <div>
+                <h2>Add a Site</h2>
+                <p>Anyone can submit a website.</p>
+            </div>
+            <button class="close-btn" id="closeModal">×</button>
+        </div>
+
+        <form id="siteForm">
+            <label>
+                Your Name
+                <input type="text" id="authorName" placeholder="e.g. Alex" maxlength="50" required>
+            </label>
+
+            <label>
+                Site Name
+                <input type="text" id="siteName" placeholder="e.g. Cool Calculator" maxlength="100" required>
+            </label>
+
+            <label>
+                Website URL
+                <input type="url" id="siteUrl" placeholder="https://example.com" required>
+            </label>
+
+            <label>
+                Description
+                <textarea id="siteDescription" placeholder="What does this site do?" maxlength="300" required></textarea>
+            </label>
+
+            <label>
+                Category
+                <select id="siteCategory" required>
+                    <option value="tools">Tools</option>
+                    <option value="games">Games</option>
+                    <option value="education">Education</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="other">Other</option>
+                </select>
+            </label>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Add Site</button>
+            <p class="form-message" id="formMessage"></p>
+        </form>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+</body>
+</html>
